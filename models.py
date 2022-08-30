@@ -13,6 +13,8 @@ db = SQLAlchemy()
 
 
 def setup_db(app, database_path=database_path):
+    """binds a flask app with a sqlalchemy service"""
+    
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.app = app
@@ -40,7 +42,7 @@ class Plant(db.Model):
         self.primary_color = primary_color
 
 
-    """def insert(self):
+    def insert(self):
         db.session.add(self)
         db.session.commit()
 
@@ -61,4 +63,4 @@ class Plant(db.Model):
             "scientific_name": self.scientific_name,
             "is_poisonous": self.is_poisonous,
             "primary_color": self.primary_color,
-        }"""
+        }
